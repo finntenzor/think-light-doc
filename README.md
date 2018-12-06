@@ -32,7 +32,7 @@ $ composer require finntenzor/think-light-doc
 在你的ThinkPHP项目中，找到/route/route.php。在你需要的位置添加如下代码：
 ``` php
 // 引入LightDoc
-use finntenzor\report\LightDoc;
+use finntenzor\lightdoc\LightDoc;
 
 // 
 // 指定路由
@@ -57,7 +57,7 @@ LightDoc::route('lightdoc', [
 
 它等价于自动编写一个Group以及对应的一组路由，因此你可以很轻松地将它和其他路由混合在一起：
 ``` php
-use finntenzor\report\LightDoc;
+use finntenzor\lightdoc\LightDoc;
 
 Route::group('app', function () {
     Route::group('api', function () {
@@ -73,7 +73,7 @@ Route::group('app', function () {
 
 并且，它返回了一个RouteGroup，因此你还可以将它跟中间件等其他功能结合在一起。
 ``` php
-use finntenzor\report\LightDoc;
+use finntenzor\lightdoc\LightDoc;
 
 Route::group('app', function () {
     Route::group('api', function () {
