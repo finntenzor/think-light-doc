@@ -1,6 +1,8 @@
 <?php
 namespace finntenzor\lightdoc;
 
+use think\facade\Route;
+
 /**
  * LightDoc
  * 外部访问类
@@ -22,9 +24,10 @@ class LightDoc
     {
         static::$documentMap = $documentMap;
         return Route::group($groupName, function () {
-            Route::get('/docs/:version', '\finntenzor\lightdoc\LightDocController@getDocumentByVersion');
+            Route::get('/docs/:version', '\finntenzor\lightdoc\LightDocController@getDocumentByVersion')->pattern(['version' => '[\w\-\.]+']);
             Route::get('/docs', '\finntenzor\lightdoc\LightDocController@getAllVersions');
-            Route::get('/', '\finntenzor\lightdoc\LightDocController@index');
+            Route::get('/', '\finntenzor\lightdoc\LightDocController@redirect');
+            Route::get('/index', '\finntenzor\lightdoc\LightDocController@index');
             Route::miss('\finntenzor\lightdoc\LightDocController@miss');
         });
     }
