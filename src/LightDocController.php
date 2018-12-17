@@ -28,8 +28,10 @@ class LightDocController
         if ($path === false) {
             return $this->error('找不到文档，请联系管理员');
         }
-        $data = include $path;
-        return $this->success($data);
+        $data = LightDocCache::cache($path);
+        $response = new \think\Response($data);
+        $response->contentType('application/json');
+        return $response;
     }
 
     /**
